@@ -38,10 +38,21 @@ Dataset berisi 12 kolom dan 1301 baris.
 - Melakukan *drop outliers*.
 - Membuat batas bawah dan atas. Batas bawah = Q1 - 1.5 * IQR dan batas atas = Q3 + 1.5 * IQR.
 - Melihat histogram fitur numerik menggunakan fitur numerik.
+
+![output numerical features](https://user-images.githubusercontent.com/73519055/209517490-31de5e5a-63f4-4acc-bec7-2eedbc7fe305.png)
+
+
 - Mengamati hubungan antar fitur numerik menggunakan fungsi pairplot.
+
+![pairplot](https://user-images.githubusercontent.com/73519055/209517583-f489a09a-8909-43c9-bc3a-e8fd856c4068.png)
+
+
 - Mengevaluasi skor korelasi menggunakan fungsi corr.
-- Melihat *correlation matrix* untuk mengetahui fitur yang berkorelasi sangat kecil dengan fitur target menggunakan fungsi heatmap.
-- Melakukan drop fitur yang memiliki korelasi kecil dengan fitur target.
+- Melihat *correlation matrix* untuk mengetahui fitur yang berkorelasi sangat kecil dengan fitur target menggunakan fungsi heatmap. Dapat dilihat fitur 'Weight' memiliki korelasi yang sangat kecil yaitu 0.04.
+
+![output correlation matrix](https://user-images.githubusercontent.com/73519055/209517260-78154877-3201-41a8-ac72-30a384dbaf7c.png)
+
+- Melakukan drop fitur 'Weight' yang memiliki korelasi kecil dengan fitur target.
 - Membagi dataset untuk training 80% dan testing 20%.
 - Melakukan normalisasi dataset untuk memastikan *record* pada dataset tetap konsisten.
 - Membuat lapisan normalisasi dengan tf.keras.layers.
