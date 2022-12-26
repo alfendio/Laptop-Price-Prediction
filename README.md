@@ -1,17 +1,23 @@
-# Laporan Proyek Machine Learning - Alfendio Alif Faudisyah
+# Laporan Proyek *Machine Learning* - Alfendio Alif Faudisyah
 
 ## Domain Proyek
 Pada era modern ini kebutuhan teknologi berbasis komputer telah menjadi kebutuhan utama bagi masyarakat. Salah satu perangkat komputer yang banyak digunakan adalah laptop. Kebutuhan akan laptop tersebut memunculkan bisnis jual beli pada laptop. Orang awam banyak yang tidak mengetahui mengenai harga laptop karena tiap laptop memiliki spesifikasi yang berbeda. Oleh karena itu dibuatlah suatu sistem yang dapat memprediksi harga laptop sehingga dapat memudahkan pembeli laptop untuk mengetahui harga laptop.
 
-## Business Understanding
-### Problem Statements
-- Ketidaktahuan orang awam atau konsumen laptop mengenai harga laptop berdasarkan spesifikasi.
+## *Business Understanding*
+### *Problem Statements*
+- Bagaimana cara mengetahui harga laptop berdasarkan spesifikasinya?
 
-### Goals
+### *Goals*
 - Membuat sistem yang dapat memprediksi harga laptop berdasarkan spesifikasi.
 
-## Data Understanding
-Dataset didapatkan dari Kaggle. [Laptop Price](https://www.kaggle.com/datasets/muhammetvarl/laptop-price)
+## *Data Understanding*
+Dataset didapatkan dari [Kaggle](https://www.kaggle.com/datasets/muhammetvarl/laptop-price).
+
+### Nama Dataset
+- Laptop Price
+
+### Jumlah Dataset
+Dataset berisi 12 kolom dan 1301 baris.
 
 ### Variabel-variabel pada Laptop Price dataset adalah sebagai berikut:
 - Company : Produsen laptop
@@ -27,24 +33,44 @@ Dataset didapatkan dari Kaggle. [Laptop Price](https://www.kaggle.com/datasets/m
 - Weight : Berat laptop 
 - Price_euros : Harga dalam euro
 
-## Data Preparation
-- Melakukan pengumpulan dataset untuk mengukur informasi mengenai variabel-variabel yang ditargetkan.
-- Melakukan pembersihan dataset untuk menghapus atau memodifikasi data yang tidak sesuai.
-- Melakukan standarisasi dataset untuk menyeragamkan data hingga seluruh data menjadi standar.
-- Melakukan pendeteksian outliers pada fitur numerik dataset.
-- Melihat correlation matrix untuk mengetahui fitur yang berkorelasi sangat kecil dengan fitur target.
-- Membagi dataset untuk training dan testing.
-- Melakukan normalisasi dataset untuk memastikan record pada dataset tetap konsisten.
+## *Data Preparation*
+- Melakukan pendeteksian *outliers* pada fitur numerik dataset menggunakan boxplot.
+- Melakukan *drop outliers*.
+- Membuat batas bawah dan atas. Batas bawah = Q1 - 1.5 * IQR dan batas atas = Q3 + 1.5 * IQR.
+- Melihat histogram fitur numerik menggunakan fitur numerik.
+- Mengamati hubungan antar fitur numerik menggunakan fungsi pairplot.
+- Mengevaluasi skor korelasi menggunakan fungsi corr.
+- Melihat *correlation matrix* untuk mengetahui fitur yang berkorelasi sangat kecil dengan fitur target menggunakan fungsi heatmap.
+- Melakukan drop fitur yang memiliki korelasi kecil dengan fitur target.
+- Membagi dataset untuk training 80% dan testing 20%.
+- Melakukan normalisasi dataset untuk memastikan *record* pada dataset tetap konsisten.
+- Membuat lapisan normalisasi dengan tf.keras.layers.
+- Menyesuaikan lapisan pra-pemrosesan ke data menggunakan fungsi adapt.
 
-## Modelling
-Model dibuat menggunakan Deep Learning dengan library TensorFlow dan Keras. Metode yang digunakan adalah Regresi dengan Deep Neural Network (DNN). Parameter pada model ini adalah sebagai berikut:
-- Model : Sequential
+## *Modelling*
+Model dibuat menggunakan *Deep Learning* dengan library TensorFlow dan Keras. Metode yang digunakan adalah Regresi dengan *Deep Neural Network* (DNN). Model DNN ini bekerja dari *node layer*, dimana *node* tiap *layer* terhubung dengan *node* lain yang saling berdekatan. *Layer* yang digunakan adalah *Normalization* sebagai *input layer*, dua lapisan *Dense* dengan activation ReLU sebagai *hidden layer*, *DropOut* untuk mengurangi *overfitting*, dan *Dense* sebagai output layer. Fungsi aktivasi ReLU sendiri adalah fungsi aktivasi non-linier sederhana yang dapat melakukan *gradient descent* dengan cepat. Tahapan yang dilakukan dalam *modelling* adalah membangun model *sequential* dengan *layers* yang telah disebutkan, melakukan *compile* model dengan mengatur *loss*, *metric*, dan *optimizer*, kemudian model *fit* untuk proses *training*. 
+
+### Rangkuman Model
+![image](https://user-images.githubusercontent.com/73519055/209514627-4c22d1f7-c452-4afd-a83e-2297b641b933.png)
+
+### Parameter model :
+- Model : *Sequential*
 - Loss : MAE
 - Metrics : MSE
-- Optimizer : Adam
+- Optimizer : Adam. Adam (*Adaptive Moment Estimation*) adalah metode learning rate adaptif yang menghitung learning rate individu untuk parameter yang berbeda.
 - Epoch : 200
 
-## Evaluation
-Metrics evaluasi yang digunakan adalah MSE. MSE mengukur kesalahan kuadrat rata-rata dari prediksi. Untuk setiap poin, MSE menghitung selisih kuadrat antara prediksi dan target kemudian merata-rata nilai-nilai tersebut. Semakin rendah nilai MSE semakin baik modelnya, semakin tinggi nilai MSE semakin buruk modelnya, dan nilai 0 untu model yang sempurna. Nilai MSE tidak pernah negatif karena menguadratkan kesalahan prediksi individu sebelum menjumlahkannya.
+## *Evaluation*
+*Metric* evaluasi yang digunakan adalah MSE. MSE mengukur kesalahan kuadrat rata-rata dari prediksi. Untuk setiap poin, MSE menghitung selisih kuadrat antara prediksi dan target kemudian merata-rata nilai-nilai tersebut. Semakin rendah nilai MSE semakin baik modelnya, semakin tinggi nilai MSE semakin buruk modelnya, dan nilai 0 untu model yang sempurna. Nilai MSE tidak pernah negatif karena menguadratkan kesalahan prediksi individu sebelum menjumlahkannya.
 
-- Hasil evaluasi yang didapat dari model adalah MSE 0.0703.
+### Visualisasi asil *training loss*
+![output mae](https://user-images.githubusercontent.com/73519055/209512579-8066bc46-0650-41ef-bfd9-4a2840915288.png)
+
+### Visualisasi hasil *training mse**
+![output mse](https://user-images.githubusercontent.com/73519055/209512693-cd5dc8da-2e74-462e-a5cc-be1ced4ac5de.png)
+
+Hasil yang didapat dari visualisasi training adalah loss: 0.2671, val_loss: 0.1902, mse: 0.1113, dan val_mse: 0.0679.
+
+### Hasil Evaluasi
+Dilakukan evaluasi pada model menggunakan data *testing* dengan menggunakan fungsi model.evaluate. Hasil penerapan dengan *metric* evaluasi yang digunakan pada gambar visualisasi hasil training adalah loss: 0.2053 dan mse: 0.0703. Dilihat dari nilai MSE model sudah dapat dibilang baik karena memiliki nilai yang cukup kecil.
+
