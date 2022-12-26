@@ -77,7 +77,7 @@ Model dibuat menggunakan *Deep Learning* dengan library TensorFlow dan Keras. Me
 ### Visualisasi asil *training loss*
 ![output mae](https://user-images.githubusercontent.com/73519055/209512579-8066bc46-0650-41ef-bfd9-4a2840915288.png)
 
-### Visualisasi hasil *training mse**
+### Visualisasi hasil *training* MSE
 ![output mse](https://user-images.githubusercontent.com/73519055/209512693-cd5dc8da-2e74-462e-a5cc-be1ced4ac5de.png)
 
 Hasil yang didapat dari visualisasi training adalah loss: 0.2671, val_loss: 0.1902, mse: 0.1113, dan val_mse: 0.0679.
