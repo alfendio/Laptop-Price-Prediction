@@ -5,7 +5,7 @@ Pada era modern ini kebutuhan teknologi berbasis komputer telah menjadi kebutuha
 
 ## *Business Understanding*
 ### *Problem Statements*
-- Bagaimana cara mengetahui harga laptop berdasarkan spesifikasinya?
+Bagaimana cara membuat sistem untuk memprediksi harga laptop berdasarkan spesifikasinya?
 
 ### *Goals*
 - Membuat sistem yang dapat memprediksi harga laptop berdasarkan spesifikasi.
