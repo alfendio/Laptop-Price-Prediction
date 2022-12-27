@@ -65,16 +65,16 @@ Model dibuat menggunakan *Deep Learning* dengan library TensorFlow dan Keras. Me
 ![image](https://user-images.githubusercontent.com/73519055/209514627-4c22d1f7-c452-4afd-a83e-2297b641b933.png)
 
 ### Parameter model :
-- Model : *Sequential*
-- Loss : MAE
-- Metrics : MSE
-- Optimizer : Adam. Adam (*Adaptive Moment Estimation*) adalah metode learning rate adaptif yang menghitung learning rate individu untuk parameter yang berbeda.
-- Epoch : 200
+- *Model* : *Sequential*
+- *Loss* : MAE
+- *Metrics* : MSE
+- *Optimizer* : Adam. Adam (*Adaptive Moment Estimation*) adalah metode learning rate adaptif yang menghitung learning rate individu untuk parameter yang berbeda.
+- *Epoch* : 200
 
 ## *Evaluation*
 *Metric* evaluasi yang digunakan adalah MSE. MSE mengukur kesalahan kuadrat rata-rata dari prediksi. Untuk setiap poin, MSE menghitung selisih kuadrat antara prediksi dan target kemudian merata-rata nilai-nilai tersebut. Semakin rendah nilai MSE semakin baik modelnya, semakin tinggi nilai MSE semakin buruk modelnya, dan nilai 0 untu model yang sempurna. Nilai MSE tidak pernah negatif karena menguadratkan kesalahan prediksi individu sebelum menjumlahkannya.
 
-### Visualisasi asil *training loss*
+### Visualisasi hasil *training loss*
 ![output mae](https://user-images.githubusercontent.com/73519055/209512579-8066bc46-0650-41ef-bfd9-4a2840915288.png)
 
 ### Visualisasi hasil *training* MSE
